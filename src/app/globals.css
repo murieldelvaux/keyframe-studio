@@ -12,3 +12,10 @@ body {
 html {
   color-scheme: dark;
 }
+
+/* Oculta o indicador flutuante de dev do Next.js */
+[data-nextjs-toast],
+nextjs-portal,
+#nextjs-dev-overlay {
+  display: none !important;
+}

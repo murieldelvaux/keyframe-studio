@@ -15,6 +15,7 @@ export default function StudioNav() {
       <Link component={NextLink} href="/studio">Vídeos</Link>
       <Link component={NextLink} href="/studio/videos/new">Novo vídeo</Link>
       <Link component={NextLink} href="/studio/about">Sobre</Link>
+      <Link component={NextLink} href="/studio/password">Segurança</Link>
       <Box component="form" action={signOut} sx={{ ml: 'auto' }}>
         <Button type="submit" size="small">Sair</Button>
       </Box>
