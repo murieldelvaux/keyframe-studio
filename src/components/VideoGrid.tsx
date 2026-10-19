@@ -1,16 +1,11 @@
 'use client';
-import { useState } from 'react';
+import NextLink from 'next/link';
 import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import type { Video } from '@/lib/types';
 import { publicUrl } from '@/lib/storage';
 
 export default function VideoGrid({ videos }: { videos: Video[] }) {
-  const [active, setActive] = useState<Video | null>(null);
-  const activeSrc = active ? publicUrl('videos', active.video_path) : null;
-
   if (videos.length === 0) {
     return (
       <Typography color="text.secondary" sx={{ px: { xs: 2, md: 5 } }}>
@@ -35,16 +30,16 @@ export default function VideoGrid({ videos }: { videos: Video[] }) {
           return (
             <Box
               key={v.id}
-              component="button"
-              onClick={() => setActive(v)}
+              component={NextLink}
+              href={`/work/${v.id}`}
               sx={{
-                all: 'unset',
-                cursor: 'pointer',
+                color: 'inherit',
+                textDecoration: 'none',
                 display: 'block',
                 '&:hover img': { opacity: 0.8 },
               }}
             >
-              <Box sx={{ aspectRatio: '16 / 9', bgcolor: '#f2f2f2', overflow: 'hidden' }}>
+              <Box sx={{ aspectRatio: '16 / 9', bgcolor: '#161616', overflow: 'hidden' }}>
                 {thumb && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -72,27 +67,6 @@ export default function VideoGrid({ videos }: { videos: Video[] }) {
         })}
       </Box>
 
-      <Dialog open={!!active} onClose={() => setActive(null)} maxWidth="lg" fullWidth>
-        {active && (
-          <Box sx={{ bgcolor: '#000' }}>
-            {activeSrc ? (
-              <video src={activeSrc} controls autoPlay style={{ width: '100%', display: 'block' }} />
-            ) : (
-              <Box sx={{ p: 6, textAlign: 'center', bgcolor: 'background.paper' }}>
-                <Typography sx={{ mb: 2 }}>{active.title}</Typography>
-                <Button href={active.external_url ?? '#'} target="_blank" rel="noopener noreferrer">
-                  Assistir
-                </Button>
-              </Box>
-            )}
-          </Box>
-        )}
-        {active?.description && (
-          <Typography sx={{ p: 3 }} color="text.secondary">
-            {active.description}
-          </Typography>
-        )}
-      </Dialog>
     </>
   );
 }
