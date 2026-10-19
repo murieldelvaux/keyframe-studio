@@ -18,6 +18,7 @@ create table public.videos (
   video_path      text,            -- bucket 'videos' (arquivos até o limite do plano)
   external_url    text,            -- alternativa para vídeos grandes (Vimeo/YouTube/etc.)
   thumbnail_path  text,            -- bucket 'thumbnails'
+  frame_paths     text[] not null default '{}', -- frames extras para a página do vídeo
   sort_order      int not null default 0,
   published       boolean not null default false,
   created_at      timestamptz not null default now(),

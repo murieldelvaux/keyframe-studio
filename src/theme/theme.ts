@@ -3,11 +3,11 @@ import { createTheme, type Shadows } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
-    background: { default: '#ffffff', paper: '#ffffff' },
-    text: { primary: '#0a0a0a', secondary: '#6b6b6b' },
-    primary: { main: '#0a0a0a' },
-    divider: '#e5e5e5',
+    mode: 'dark',
+    background: { default: '#0a0a0a', paper: '#0a0a0a' },
+    text: { primary: '#f2f2f2', secondary: '#8a8a8a' },
+    primary: { main: '#f2f2f2' },
+    divider: '#262626',
   },
   shape: { borderRadius: 0 },
   typography: {

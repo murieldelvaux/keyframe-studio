@@ -6,6 +6,7 @@ export type Video = {
   video_path: string | null;
   external_url: string | null;
   thumbnail_path: string | null;
+  frame_paths: string[];
   sort_order: number;
   published: boolean;
   created_at: string;
